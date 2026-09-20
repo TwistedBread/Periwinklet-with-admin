@@ -76,7 +76,7 @@
     .checkmark-rose:hover .tip,.checkmark-blue:hover .tip,.checkmark-gold:hover .tip,.checkmark-teal:hover .tip{display:block}
     .chat-msg .meta .ck{position:relative;cursor:help}
     .coins-row{display:flex;align-items:center;gap:8px;font-size:1.2rem;font-weight:700;color:#7b6ef0;background:#f0edff;padding:8px 18px;border-radius:12px}
-    .coins-row img{width:28px;height:28px}
+    .coins-row img{width:28px;height:28px;object-fit:contain}
     .role-badge{font-weight:800;font-size:.9rem;padding:5px 14px;border-radius:20px;background:#ebe7ff;color:#5c52c7}
     .role-owner{background:#fce4ec;color:#e91e8c}
     .role-periwinkle{background:#fff8e1;color:#f9a825}
@@ -272,7 +272,7 @@
         <div class="stats-box">
           <div id="stats-avatar" class="avatar"></div>
           <h1 id="stats-username" class="uname"></h1>
-          <div id="stats-coins" class="coins-row"><img src="img/coin.png" alt="coin" /> <span id="coins-num">0</span></div>
+          <div id="stats-coins" class="coins-row"><img src="img/coin.png" alt="P" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span style="display:none;font-size:1.3rem;font-weight:800;color:#f9a825">P</span> <span id="coins-num">0</span></div>
           <div id="stats-role" class="role-badge">Player</div>
           <div class="badges-section">
             <h3>Badges</h3>
