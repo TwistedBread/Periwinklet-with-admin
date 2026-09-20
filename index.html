@@ -17,7 +17,7 @@
     .split{display:flex;min-height:100vh}
     .split-left{flex:1;background:#9b8cf5;padding:28px 48px;display:flex;flex-direction:column;position:relative}
     .split-right{flex:1;background:#b5aaff;position:relative;overflow:hidden}
-    .logo{font-family:'Titan One',cursive;font-size:3.5rem;color:#fff;text-shadow:0 5px 0 rgba(70,60,150,.35);letter-spacing:1px}
+    .logo{font-family:'Titan One',cursive;font-size:4.2rem;color:#fff;text-shadow:0 5px 0 rgba(70,60,150,.35);letter-spacing:1px}
     .hero{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:420px}
     .hero-title{font-family:'Titan One',cursive;font-size:3.6rem;color:#fff;line-height:1.15;text-shadow:0 4px 0 rgba(70,60,150,.3);margin-bottom:18px}
     .hero-desc{font-size:1.15rem;color:rgba(255,255,255,.9);font-weight:600;line-height:1.5;margin-bottom:28px}
@@ -50,7 +50,7 @@
     #dashboard{display:flex;min-height:100vh;background:#d8d3ff}
     .sidebar{width:240px;background:#7b6ef0;color:#fff;display:flex;flex-direction:column;padding:24px 16px}
     .sidebar-top{display:flex;align-items:center;gap:10px;padding:0 6px 28px;flex-wrap:wrap}
-    .sidebar-top .logo{font-size:1.55rem}
+    .sidebar-top .logo{font-size:1.9rem}
     .beta-tag{background:rgba(255,255,255,.25);font-size:.7rem;font-weight:800;padding:3px 9px;border-radius:6px;letter-spacing:1px}
     .nav{display:flex;flex-direction:column;gap:6px;flex:1}
     .nav-btn{background:transparent;border:none;color:rgba(255,255,255,.8);font-family:'Nunito',sans-serif;font-weight:700;font-size:1rem;padding:12px 14px;border-radius:11px;cursor:pointer;text-align:left;transition:background .2s,color .2s}
@@ -63,11 +63,13 @@
     @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
     .stats-box{background:#fff;border-radius:24px;padding:50px 40px;display:flex;flex-direction:column;align-items:center;gap:14px;max-width:480px;margin:0 auto;box-shadow:0 8px 28px rgba(100,80,180,.12)}
     .avatar{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,#9b8cf5,#7b6ef0);display:flex;align-items:center;justify-content:center;font-family:'Titan One',cursive;font-size:3.2rem;color:#fff;text-transform:uppercase;box-shadow:0 6px 0 #5c52c7}
-    .uname{font-family:'Titan One',cursive;font-size:2.1rem;color:#5c52c7;display:flex;align-items:center;gap:8px;position:relative}
-    .uname-owner{color:#e91e8c;text-shadow:0 0 8px rgba(233,30,140,.55),0 0 16px rgba(233,30,140,.25)}
-    .uname-periwinkle{color:#f9a825;text-shadow:0 0 8px rgba(249,168,37,.55),0 0 16px rgba(249,168,37,.3)}
-    .uname-jasper{color:#00bfa5;text-shadow:0 0 8px rgba(0,191,165,.55),0 0 16px rgba(0,191,165,.3)}
-    .uname-creator{color:#2196f3;text-shadow:0 0 8px rgba(33,150,243,.5),0 0 14px rgba(33,150,243,.25)}
+    .uname{font-family:'Titan One',cursive;font-size:2.4rem;color:#5c52c7;display:flex;align-items:center;gap:8px;position:relative}
+    .uname-owner{color:#e91e8c;text-shadow:0 0 6px #e91e8c, 0 0 12px #e91e8c, 0 0 20px rgba(233,30,140,.7), 0 0 30px rgba(233,30,140,.4)}
+    .uname-periwinkle{color:#f9a825;text-shadow:0 0 6px #f9a825, 0 0 12px #f9a825, 0 0 20px rgba(249,168,37,.7), 0 0 30px rgba(249,168,37,.4)}
+    .uname-jasper{color:#00bfa5;text-shadow:0 0 6px #00bfa5, 0 0 12px #00bfa5, 0 0 20px rgba(0,191,165,.7), 0 0 30px rgba(0,191,165,.4)}
+    .uname-creator{color:#2196f3;text-shadow:0 0 6px #2196f3, 0 0 12px #2196f3, 0 0 20px rgba(33,150,243,.7), 0 0 30px rgba(33,150,243,.4)}
+    .name-link.uname-owner,.name-link.uname-periwinkle,.name-link.uname-jasper,.name-link.uname-creator{font-weight:800}
+    .pc-name.uname-owner,.pc-name.uname-periwinkle,.pc-name.uname-jasper,.pc-name.uname-creator{font-family:'Titan One',cursive}
     .checkmark-rose{color:#e91e8c;font-size:1.5rem;cursor:help;position:relative}
     .checkmark-blue{color:#2196f3;font-size:1.5rem;cursor:help;position:relative}
     .checkmark-gold{color:#ffc107;font-size:1.5rem;cursor:help;position:relative;text-shadow:0 0 6px rgba(255,193,7,.5)}
@@ -143,7 +145,7 @@
           <h1 class="hero-title">Blooket.<br>But.<br>Periwinkle.</h1>
           <p class="hero-desc">The first periwinkle themed Blooket private server<br>Currently in Beta</p>
           <button class="btn-getstarted" onclick="showRegister()">Get Started</button>
-          <div class="pronunciation" onclick="playPronunciation()">🔊 Pronunciation ("Periwinklet")</div>
+          <div class="pronunciation" onclick="playPronunciation()">🔊 Pronunciation ("perry-wink-let")</div>
         </div>
         <p class="creator-credit">Created by <a href="https://www.youtube.com/@TwistedBread" target="_blank">TwistedBread</a> · <a class="discord-link" href="https://discord.gg/f8pkTJvyQ" target="_blank" style="color:#fff">Periwinklet Discord</a></p>
       </div>
@@ -233,6 +235,24 @@
         <button class="btn-primary" onclick="adminLookup()">Lookup</button>
         <p id="admin-lookup-msg" class="success"></p>
       </div>
+      <div class="admin-section">
+        <h3>Give Steven Badge</h3>
+        <input type="text" id="admin-steven-user" placeholder="Username" />
+        <button class="btn-primary" onclick="adminGiveSteven()">Give Steven Badge</button>
+        <p id="admin-steven-msg" class="success"></p>
+      </div>
+      <div class="admin-section">
+        <h3>Wipe All Coins</h3>
+        <input type="text" id="admin-wipe-user" placeholder="Username" />
+        <button class="btn-primary" onclick="adminWipeCoins()">Wipe Coins to 0</button>
+        <p id="admin-wipe-msg" class="success"></p>
+      </div>
+      <div class="admin-section">
+        <h3>Clear Player Badges</h3>
+        <input type="text" id="admin-clearbadges-user" placeholder="Username" />
+        <button class="btn-primary" onclick="adminClearBadges()">Clear All Badges</button>
+        <p id="admin-clearbadges-msg" class="success"></p>
+      </div>
     </div>
   </div>
 
@@ -299,11 +319,20 @@
         </div>
       </section>
       <section id="tab-players" class="panel hidden">
+        <div style="text-align:center;margin-bottom:24px">
+          <h2 style="font-family:'Titan One',cursive;font-size:2rem;color:#5c52c7;margin-bottom:6px">Find Players</h2>
+          <p style="color:#8a85b0;font-weight:600">Search any username to view their profile</p>
+        </div>
         <div class="players-search">
           <input type="text" id="player-search-input" placeholder="Search username..." maxlength="20" onkeydown="if(event.key==='Enter')searchPlayer()" />
           <button onclick="searchPlayer()">Search</button>
         </div>
-        <div id="player-result"></div>
+        <div id="player-result">
+          <div class="empty" style="margin-top:10px">
+            <h2 style="font-size:1.5rem">Who are you looking for?</h2>
+            <p>Type a username above to see their coins, badges, and more</p>
+          </div>
+        </div>
       </section>
       <section id="tab-updates" class="panel hidden">
         <div class="updates-card">
@@ -358,8 +387,8 @@
     function showAdmin(){
       closeModals();
       document.getElementById("admin-modal").classList.remove("hidden");
-      ["admin-coin-user","admin-coin-amount","admin-remove-user","admin-remove-amount","admin-set-user","admin-set-amount","admin-creator-user","admin-uncreator-user","admin-gw-user","admin-gw-name","admin-lookup-user"].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=""; });
-      ["admin-coin-msg","admin-remove-msg","admin-set-msg","admin-creator-msg","admin-uncreator-msg","admin-gw-msg","admin-lookup-msg"].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=""; });
+      ["admin-coin-user","admin-coin-amount","admin-remove-user","admin-remove-amount","admin-set-user","admin-set-amount","admin-creator-user","admin-uncreator-user","admin-gw-user","admin-gw-name","admin-lookup-user","admin-steven-user","admin-wipe-user","admin-clearbadges-user"].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=""; });
+      ["admin-coin-msg","admin-remove-msg","admin-set-msg","admin-creator-msg","admin-uncreator-msg","admin-gw-msg","admin-lookup-msg","admin-steven-msg","admin-wipe-msg","admin-clearbadges-msg"].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent=""; });
     }
     function showMod(){
       closeModals();
@@ -516,6 +545,43 @@
       if(!user){msg.style.color="#e74c3c";msg.textContent="User not found.";return;}
       msg.style.color="#2e7d32";
       msg.textContent=user.username+" | coins: "+(user.coins||0)+" | creator: "+(user.is_creator?"yes":"no")+" | badges: "+JSON.stringify(user.badges||[]);
+    }
+
+    async function adminGiveSteven(){
+      const username=document.getElementById("admin-steven-user").value.trim();
+      const msg=document.getElementById("admin-steven-msg");
+      if(!username){msg.style.color="#e74c3c";msg.textContent="Enter a username.";return;}
+      const user=await findUser(username);
+      if(!user){msg.style.color="#e74c3c";msg.textContent="User not found.";return;}
+      let badges=user.badges||[];
+      if(!Array.isArray(badges)) badges=[];
+      if(!badges.includes("steven")) badges.push("steven");
+      const {error}=await sb.from("users").update({badges}).eq("username",user.username);
+      if(error){msg.style.color="#e74c3c";msg.textContent="Failed.";return;}
+      msg.style.color="#2e7d32";msg.textContent="Gave Steven badge to "+user.username+".";
+    }
+
+    async function adminWipeCoins(){
+      const username=document.getElementById("admin-wipe-user").value.trim();
+      const msg=document.getElementById("admin-wipe-msg");
+      if(!username){msg.style.color="#e74c3c";msg.textContent="Enter a username.";return;}
+      const user=await findUser(username);
+      if(!user){msg.style.color="#e74c3c";msg.textContent="User not found.";return;}
+      const {error}=await sb.from("users").update({coins:0}).eq("username",user.username);
+      if(error){msg.style.color="#e74c3c";msg.textContent="Failed.";return;}
+      msg.style.color="#2e7d32";msg.textContent="Wiped "+user.username+"'s coins to 0.";
+      if(getCurrentUser()&&getCurrentUser().toLowerCase()===user.username.toLowerCase()) updateStatsDisplay();
+    }
+
+    async function adminClearBadges(){
+      const username=document.getElementById("admin-clearbadges-user").value.trim();
+      const msg=document.getElementById("admin-clearbadges-msg");
+      if(!username){msg.style.color="#e74c3c";msg.textContent="Enter a username.";return;}
+      const user=await findUser(username);
+      if(!user){msg.style.color="#e74c3c";msg.textContent="User not found.";return;}
+      const {error}=await sb.from("users").update({badges:[], is_creator:false}).eq("username",user.username);
+      if(error){msg.style.color="#e74c3c";msg.textContent="Failed.";return;}
+      msg.style.color="#2e7d32";msg.textContent="Cleared all badges from "+user.username+".";
     }
 
     async function updateStatsDisplay(){
