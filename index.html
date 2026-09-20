@@ -272,12 +272,13 @@
         <div class="stats-box">
           <div id="stats-avatar" class="avatar"></div>
           <h1 id="stats-username" class="uname"></h1>
-          <div id="stats-coins" class="coins-row"><img src="img/coin.png" alt="P" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'" /><span style="display:none;font-size:1.3rem;font-weight:800;color:#f9a825">P</span> <span id="coins-num">0</span></div>
+          <div id="stats-coins" class="coins-row"><img src="img/coin.png" alt="coin" width="28" height="28" style="object-fit:contain" /> <span id="coins-num">0</span></div>
           <div id="stats-role" class="role-badge">Player</div>
           <div class="badges-section">
             <h3>Badges</h3>
             <div id="badges-row" class="badges-row"></div>
           </div>
+          <p id="stats-joined" style="margin-top:10px;font-size:.85rem;color:#8a85b0;font-weight:600"></p>
           <p style="margin-top:8px;font-size:.9rem;color:#8a85b0"><a class="discord-link" href="https://discord.gg/f8pkTJvyQ" target="_blank">Periwinklet Discord</a></p>
         </div>
       </section>
@@ -307,26 +308,27 @@
       <section id="tab-updates" class="panel hidden">
         <div class="updates-card">
           <h2>Updates</h2>
-          <div class="ver">Version 0.1.0</div>
+          <div class="ver">Version 0.2.0</div>
+          <ul>
+            <li>Players tab — search and view any player</li>
+            <li>Chat PFPs + click names to view profiles</li>
+            <li>Bigger chat</li>
+            <li>Glowing names for special accounts</li>
+            <li>New coin & logo</li>
+            <li>YouTube badge for Content Creators</li>
+            <li>Mods panel</li>
+          </ul>
+          <div class="ver" style="margin-top:18px">Version 0.1.0</div>
           <ul>
             <li>Global Chat is live</li>
             <li>Profile page with roles and badges</li>
-            <li>Coin icon on Profile</li>
-            <li>Market scaffold with first 3 Balls</li>
-            <li>Steven rarity at 0.001 chance + badge</li>
-            <li>Content Creator badge</li>
-            <li>Admin: remove coins, set coins, lookup, add winkle queue</li>
-            <li>Discord link added</li>
-            <li>Gold checkmark for official Periwinklet account</li>
-            <li>Accounts powered by cloud database</li>
+            <li>Content Creator checkmarks</li>
+            <li>Discord link</li>
           </ul>
           <div class="ver" style="margin-top:18px">Version 0.0.1</div>
           <ul>
             <li>Periwinklet launched in Beta</li>
-            <li>Login & Register system live</li>
-            <li>Admin panel (grant coins + content creators)</li>
-            <li>Rose checkmark for TwistedBread (Owner)</li>
-            <li>Blue checkmark for Content Creators</li>
+            <li>Login & Register</li>
           </ul>
           <p class="by">— TwistedBread</p>
         </div>
@@ -545,6 +547,14 @@
       else if(user.is_creator){ role.textContent="Content Creator"; role.classList.add("role-creator"); }
       else role.textContent="Player";
 
+      const joinedEl = document.getElementById("stats-joined");
+      if(joinedEl){
+        if(user.created_at){
+          try { joinedEl.textContent = "Joined " + new Date(user.created_at).toLocaleDateString(); }
+          catch(e){ joinedEl.textContent = ""; }
+        } else joinedEl.textContent = "";
+      }
+
       const row=document.getElementById("badges-row");
       row.innerHTML="";
       // Periwinklet never shows badges
@@ -618,10 +628,11 @@
 
         const initial = (m.username || "?").charAt(0).toUpperCase();
         const safeName = escapeHtml(m.username);
+        const glow = getNameGlowClass(m.username, creatorMap[m.username]);
         div.innerHTML =
           '<div class="pfp" onclick="viewPlayer(\''+safeName+'\')">'+initial+'</div>' +
           '<div class="msg-body">' +
-            '<div class="meta"><span class="name-link" onclick="viewPlayer(\''+safeName+'\')">'+safeName+'</span> '+ck+'</div>' +
+            '<div class="meta"><span class="name-link '+glow+'" onclick="viewPlayer(\''+safeName+'\')">'+safeName+'</span> '+ck+'</div>' +
             '<div>'+escapeHtml(m.message)+'</div>' +
           '</div>';
         box.appendChild(div);
@@ -647,11 +658,21 @@
       searchPlayer();
     }
 
+    function getNameGlowClass(username, isCreator){
+      if(username==="TwistedBread") return "uname-owner";
+      if(username==="Periwinklet") return "uname-periwinkle";
+      if(username==="Jasper") return "uname-jasper";
+      if(isCreator) return "uname-creator";
+      return "";
+    }
+
     function renderPlayerCard(user, container){
       const ck = checkHTML(user.username);
       let nameHtml = escapeHtml(user.username);
       if(ck) nameHtml += " " + ck;
       else if(user.is_creator) nameHtml += ' <span class="checkmark-blue">✓<span class="tip">Content Creator</span></span>';
+
+      const glowClass = getNameGlowClass(user.username, user.is_creator);
 
       let roleText = "Player";
       let roleClass = "";
@@ -663,7 +684,7 @@
       let badgesHtml = "";
       if(user.username !== "Periwinklet"){
         const badges = user.badges || [];
-        if(badges.includes("steven") || (badges.includes("creator") || user.is_creator)){
+        if(badges.includes("steven") || badges.includes("creator") || user.is_creator){
           badgesHtml = '<div class="badges-row" style="justify-content:center;margin-top:10px">';
           if(badges.includes("steven")) badgesHtml += '<div class="badge-item" title="Pulled a Steven!"><img src="badges/steven.png" alt="Steven" /></div>';
           if(badges.includes("creator") || user.is_creator) badgesHtml += '<div class="badge-item" title="Content Creator"><img src="badges/youtube.png" alt="Creator" /></div>';
@@ -671,13 +692,22 @@
         }
       }
 
+      let joined = "";
+      if(user.created_at){
+        try {
+          const d = new Date(user.created_at);
+          joined = '<p style="margin-top:12px;font-size:.85rem;color:#8a85b0;font-weight:600">Joined '+d.toLocaleDateString()+'</p>';
+        } catch(e){}
+      }
+
       container.innerHTML =
         '<div class="player-card">' +
           '<div class="pc-avatar">'+escapeHtml(user.username.charAt(0).toUpperCase())+'</div>' +
-          '<div class="pc-name">'+nameHtml+'</div>' +
+          '<div class="pc-name '+glowClass+'">'+nameHtml+'</div>' +
           '<div class="role-badge '+roleClass+'" style="display:inline-block;margin:6px 0">'+roleText+'</div>' +
-          '<div class="pc-coins"><img src="img/coin.png" alt="coin" /> '+(user.coins||0)+'</div>' +
+          '<div class="pc-coins"><img src="img/coin.png" alt="coin" width="24" height="24" style="object-fit:contain" /> '+(user.coins||0)+'</div>' +
           badgesHtml +
+          joined +
         '</div>';
     }
 
